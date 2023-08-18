@@ -1,6 +1,6 @@
 <script setup>
-import {Transfer} from "../moudels/eny-ui";
-import Loading from "../moudels/eny-ui/Loading/Loading.vue";
+import {Transfer, TypeWriter} from "../moudels/eny-ui";
+
 
 // 穿梭框数据
 const transferData = [
@@ -73,7 +73,12 @@ const transferData = [
     rightTitle="已选择手机型号"
   />
 
-  <loading :loading="false"></loading>
+  <type-writer
+      :className="'type-it0'"
+      :values="['时光不老，我们不散😃！']"
+      :cursor="false"
+      :speed="60"
+  />
 
 </template>
 
