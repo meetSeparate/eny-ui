@@ -1,6 +1,5 @@
 <script setup>
-import {Transfer, TypeWriter} from "../moudels/eny-ui";
-
+import {Transfer, TypeWriter, Loading} from "../moudels/eny-ui";
 
 // 穿梭框数据
 const transferData = [
@@ -65,6 +64,13 @@ const transferData = [
     ]
   },
 ]
+const loading = Loading
+const showLoading = () => {
+  loading.show()
+  setTimeout(() => {
+    loading.close()
+  }, 2000)
+}
 </script>
 
 <template>
@@ -79,6 +85,7 @@ const transferData = [
       :cursor="false"
       :speed="60"
   />
+  <button @click="showLoading">开始</button>
 
 </template>
 

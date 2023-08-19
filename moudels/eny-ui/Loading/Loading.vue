@@ -1,8 +1,11 @@
 <script setup>
-import {toRefs} from "vue";
+import {toRefs} from "vue"
 
 const props = defineProps({
-  loading: Boolean
+  loading: {
+    type: Boolean,
+    default: true
+  }
 })
 
 const {loading} = toRefs(props)
@@ -22,17 +25,23 @@ defineExpose({
 </script>
 
 <template>
-  <div v-if="loading" class="mask">
-  </div>
+<div id="loading" style="display: none">
+  <div v-if="loading" class="mask"></div>
   <div v-if="loading" class="newtons-cradle">
     <div class="newtons-cradle__dot"></div>
     <div class="newtons-cradle__dot"></div>
     <div class="newtons-cradle__dot"></div>
     <div class="newtons-cradle__dot"></div>
   </div>
+</div>
 </template>
 
 <style scoped lang="scss">
+#loading {
+  position: absolute;
+  top: calc(50% - 40px);
+  left: calc(50% - 40px);
+}
 .mask {
   position: fixed;
   top: 0;
