@@ -1,8 +1,8 @@
 <script setup>
 import propsData from "./composable/props";
-import EnySelect from "./components/EnySelect.vue";
-import CheckBoxGroup from "./components/CheckBoxGroup.vue";
-import EnyButton from "./components/EnyButton.vue";
+import EnySelect from "../Select/index.vue";
+import CheckBoxGroup from "../CheckBoxGroup/index.vue";
+import EnyButton from "../Button/index.vue";
 
 import {
   useTargetIndex,

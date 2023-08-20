@@ -1,5 +1,6 @@
 <script setup>
-import {Transfer, TypeWriter, Loading} from "../moudels/eny-ui";
+import {ref} from "vue";
+import {Transfer, TypeWriter, Loading, EnyButton, EnyInput} from "../moudels/eny-ui";
 
 // 穿梭框数据
 const transferData = [
@@ -71,24 +72,34 @@ const showLoading = () => {
     loading.close()
   }, 2000)
 }
+
+const inputValue = ref('')
 </script>
 
 <template>
-  <Transfer
-    :data="transferData"
-    rightTitle="已选择手机型号"
-  />
+  <div class="padding">
+    <Transfer
+        :data="transferData"
+        rightTitle="已选择手机型号"
+    />
 
-  <type-writer
-      :className="'type-it0'"
-      :values="['时光不老，我们不散😃！']"
-      :cursor="false"
-      :speed="60"
-  />
-  <button @click="showLoading">开始</button>
+    <type-writer
+        :className="'type-it0'"
+        :values="['时光不老，我们不散😃！']"
+        :cursor="false"
+        :speed="60"
+    />
+    <div style="margin: 10px"><eny-button @click="showLoading" type="primary">开始</eny-button></div>
+
+    <div style="margin: 10px"><eny-input placeholder="请输入" v-model="inputValue"/></div>
+    {{inputValue}}
+
+  </div>
 
 </template>
 
 <style scoped>
-
+.padding {
+  padding: 20px;
+}
 </style>
