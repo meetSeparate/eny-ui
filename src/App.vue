@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from "vue";
-import {Transfer, TypeWriter, Loading, EnyButton, EnyInput} from "../moudels/eny-ui";
+import {Transfer, TypeWriter, Loading, EnyButton, EnyInput, EnyMotion} from "../moudels/eny-ui";
 
 // 穿梭框数据
 const transferData = [
@@ -89,7 +89,9 @@ const inputValue = ref('')
         :cursor="false"
         :speed="60"
     />
-    <div style="margin: 10px"><eny-button @click="showLoading" type="primary">开始</eny-button></div>
+    <eny-motion>
+      <div style="margin: 10px"><eny-button @click="showLoading" type="primary">开始</eny-button></div>
+    </eny-motion>
 
     <div style="margin: 10px"><eny-input placeholder="请输入" v-model="inputValue"/></div>
     {{inputValue}}
