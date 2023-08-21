@@ -1,128 +1,103 @@
-<script setup>
-import {toRefs} from "vue"
-
-const props = defineProps({
-  loading: {
-    type: Boolean,
-    default: true
-  }
-})
-
-const {loading} = toRefs(props)
-
-const show = () =>  {
-  loading.value = true
-}
-
-const close = () => {
-  loading.value = false
-}
-
-defineExpose({
-  show,
-  close
-})
-</script>
+<script setup></script>
 
 <template>
-<div id="loading" style="display: none">
-  <div v-if="loading" class="mask"></div>
-  <div v-if="loading" class="newtons-cradle">
-    <div class="newtons-cradle__dot"></div>
-    <div class="newtons-cradle__dot"></div>
-    <div class="newtons-cradle__dot"></div>
-    <div class="newtons-cradle__dot"></div>
+  <div id="loading" class="bytedanceLoading">
+    <div class="bytedanceLoading__wrapper">
+      <!-- <div class="bytedanceLoading__background"></div> -->
+      <div class="bytedanceLoading__inner">
+        <div class="bytedanceLoading__inner-item"></div>
+        <div class="bytedanceLoading__inner-item"></div>
+        <div class="bytedanceLoading__inner-item"></div>
+        <div class="bytedanceLoading__inner-item"></div>
+      </div>
+    </div>
   </div>
-</div>
 </template>
 
 <style scoped lang="scss">
+$height: 10px;
+$duration: 400ms;
+$itemWidth: 9px;
+$doubleHorizontalSpace: 2px;
+$longerHeight: 29px;
+$shorterHeight: 14px;
+
 #loading {
-  position: absolute;
-  top: calc(50% - 40px);
-  left: calc(50% - 40px);
+  display: none;
 }
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  opacity: .3;
+.directiveLoading {
+  &-parent {
+    position: relative;
+    &-visible {
+      // max-height: 100vh !important;
+      // overflow: hidden;
+      // min-height: 500px !important;
+    }
+  }
+}
+@keyframes verticalDance {
+  0% {
+    transform: translate3d(0, $height, 0);
+  }
+  50% {
+    transform: translate3d(0, -$height, 0);
+  }
+  100% {
+    transform: translate3d(0, $height, 0);
+  }
 }
 
-.newtons-cradle {
-  --uib-size: 80px;
-  --uib-speed: 1.2s;
-  --uib-color: #474554;
-  position: relative;
+.bytedanceLoading {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--uib-size);
-  height: var(--uib-size);
-  margin: 0 auto;
-}
-
-.newtons-cradle__dot {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 25%;
-  transform-origin: center top;
-}
-
-.newtons-cradle__dot::after {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 25%;
-  border-radius: 50%;
-  background-color: var(--uib-color);
-}
-
-.newtons-cradle__dot:first-child {
-  animation: swing var(--uib-speed) linear infinite;
-}
-
-.newtons-cradle__dot:last-child {
-  animation: swing2 var(--uib-speed) linear infinite;
-}
-
-@keyframes swing {
-  0% {
-    transform: rotate(0deg);
-    animation-timing-function: ease-out;
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 100;
+  &-fullscreen {
+    position: fixed !important;
+  }
+  &__wrapper {
+    height: 100%;
   }
 
-  25% {
-    transform: rotate(70deg);
-    animation-timing-function: ease-in;
-  }
+  &__inner {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    &-item {
+      width: $itemWidth;
+      margin: 0 $doubleHorizontalSpace;
+      animation-name: verticalDance;
+      animation-duration: $duration;
+      animation-iteration-count: infinite;
+      &:first-child {
+        background-color: #2d5fb2;
+        height: $longerHeight;
 
-  50% {
-    transform: rotate(0deg);
-    animation-timing-function: linear;
+        animation-delay: -300ms;
+      }
+      &:nth-child(2) {
+        background-color: #3682c7;
+        height: $shorterHeight;
+        animation-delay: -400ms;
+      }
+      &:nth-child(3) {
+        animation-delay: -600ms;
+        background-color: #00bfc5;
+        height: $shorterHeight;
+      }
+      &:last-child {
+        animation-delay: -900ms;
+        background-color: #5acec6;
+        height: $longerHeight;
+      }
+    }
   }
 }
-
-@keyframes swing2 {
-  0% {
-    transform: rotate(0deg);
-    animation-timing-function: linear;
-  }
-
-  50% {
-    transform: rotate(0deg);
-    animation-timing-function: ease-out;
-  }
-
-  75% {
-    transform: rotate(-70deg);
-    animation-timing-function: ease-in;
-  }
-}
-
 </style>
