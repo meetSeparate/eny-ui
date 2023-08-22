@@ -9,6 +9,7 @@ import EnyInput from './Input/index.vue'
 import EnyMotion from './Motion/index'
 import EnySwitch from './Switch/index.vue'
 import EnyMarkScore from './markScore/index.vue'
+import EnyTab from './Tab/index.vue'
 
 export {
     Transfer,
@@ -21,5 +22,6 @@ export {
     EnyInput,
     EnyMotion,
     EnySwitch,
-    EnyMarkScore
+    EnyMarkScore,
+    EnyTab
 }
