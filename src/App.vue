@@ -1,6 +1,6 @@
 <script setup>
 import {ref} from "vue";
-import {Transfer, TypeWriter, Loading, EnyButton, EnyInput, EnyMotion} from "../moudels/eny-ui";
+import {Transfer, TypeWriter, Loading, EnyButton, EnyInput, EnyMotion, EnySwitch} from "../moudels/eny-ui";
 
 // 穿梭框数据
 const transferData = [
@@ -74,6 +74,7 @@ const showLoading = () => {
 }
 
 const inputValue = ref('')
+const switchChecked = ref(false)
 </script>
 
 <template>
@@ -96,6 +97,7 @@ const inputValue = ref('')
     <div style="margin: 10px"><eny-input placeholder="请输入" v-model="inputValue"/></div>
     {{inputValue}}
 
+    <eny-switch v-model="switchChecked"/>
   </div>
 
 </template>

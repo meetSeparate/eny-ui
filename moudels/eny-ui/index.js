@@ -7,6 +7,7 @@ import EnySelect from './Select/index.vue'
 import EnyCheckBoxGroup from './CheckBoxGroup/index.vue'
 import EnyInput from './Input/index.vue'
 import EnyMotion from './Motion/index'
+import EnySwitch from './Switch/index.vue'
 
 export {
     Transfer,
@@ -17,5 +18,6 @@ export {
     EnySelect,
     EnyCheckBoxGroup,
     EnyInput,
-    EnyMotion
+    EnyMotion,
+    EnySwitch
 }
