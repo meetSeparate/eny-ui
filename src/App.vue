@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from "vue";
 import {Transfer, TypeWriter, Loading, EnyButton, EnyInput, EnyMotion, EnySwitch, EnyMarkScore, EnyTab} from "../moudels/eny-ui";
+import { showDialog } from '../moudels/eny-ui/EnyDialog'
 
 // 穿梭框数据
 const transferData = [
@@ -106,6 +107,7 @@ const markNumber = ref(1)
 
     <eny-tab />
 
+    <eny-button @click="showDialog('你好， EnyUI', (closed) => {closed()})">展示对话框</eny-button>
   </div>
 
 </template>
